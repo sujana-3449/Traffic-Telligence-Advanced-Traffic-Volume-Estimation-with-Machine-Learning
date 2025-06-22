@@ -1,0 +1,14 @@
+import numpy as np
+
+def plot_dots(ax, start, end, count, color='blue', max_dots=50, jitter=0.02):
+    count = min(count, max_dots)
+    if start[0] == end[0]:
+        x_points = np.full(count, start[0]) + np.random.uniform(-jitter, jitter, count)
+        y_points = np.random.uniform(min(start[1], end[1]), max(start[1], end[1]), count)
+    elif start[1] == end[1]:
+        x_points = np.random.uniform(min(start[0], end[0]), max(start[0], end[0]), count)
+        y_points = np.full(count, start[1]) + np.random.uniform(-jitter, jitter, count)
+    else:
+        x_points = np.random.uniform(min(start[0], end[0]), max(start[0], end[0]), count)
+        y_points = np.random.uniform(min(start[1], end[1]), max(start[1], end[1]), count)
+    ax.scatter(x_points, y_points, color=color, s=50, alpha=0.8, edgecolor='black')
