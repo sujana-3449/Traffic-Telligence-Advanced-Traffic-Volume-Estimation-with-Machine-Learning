@@ -1,0 +1,35 @@
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+from plot_utils import plot_dots
+import os
+
+def generate_frames(df, specific_date_condition, hours, output_dir='frames'):
+    os.makedirs(output_dir, exist_ok=True)
+    filenames = []
+    for hour in hours:
+        filtered_df = df[specific_date_condition & (df['hour'] == hour)]
+        vehicles_by_junction = filtered_df.groupby('Junction')['Vehicles'].sum().to_dict()
+        for j in [1, 2, 3, 4]:
+            vehicles_by_junction.setdefault(j, 0)
+        fig, ax = plt.subplots(figsize=(8, 8))
+        ax.set_facecolor('#e0e0e0')
+        road_width = 0.3
+        ax.add_patch(patches.Rectangle((0.35, 0), road_width, 1, color='gray'))
+        ax.add_patch(patches.Rectangle((0, 0.35), 1, road_width, color='gray'))
+        for offset in [-0.05, 0.05]:
+            ax.plot([0.5 + offset, 0.5 + offset], [0, 1], color='white', linestyle='--', linewidth=2)
+            ax.plot([0, 1], [0.5 + offset, 0.5 + offset], color='white', linestyle='--', linewidth=2)
+        plot_dots(ax, (0.4, 0.7), (0.4, 0.9), vehicles_by_junction[1], 'red')
+        plot_dots(ax, (0.6, 0.6), (0.8, 0.6), vehicles_by_junction[2], 'green')
+        plot_dots(ax, (0.2, 0.4), (0.4, 0.4), vehicles_by_junction[3], 'blue')
+        plot_dots(ax, (0.6, 0.2), (0.6, 0.4), vehicles_by_junction[4], 'orange')
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)
+        ax.axis('off')
+        plt.title(f"May 15, 2016 – Hour: {hour}:00", fontsize=16)
+        plt.tight_layout()
+        filename = f"{output_dir}/frame_{hour:02d}.png"
+        plt.savefig(filename)
+        filenames.append(filename)
+        plt.close()
+    return filenames
