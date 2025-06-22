@@ -1,0 +1,11 @@
+from data_preprocessing import load_and_prepare_data
+from frame_generator import generate_frames
+from gif_creator import create_gif
+
+df = load_and_prepare_data("traffic.csv")
+specific_date = (df['year'] == 2016) & (df['month'] == 5) & (df['date'] == 15) & (df['Meridiem'] == 0)
+hours = sorted(df[specific_date]['hour'].unique())
+
+# Generate frames and create a GIF
+frames = generate_frames(df, specific_date, hours)
+create_gif(frames)
