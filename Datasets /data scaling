@@ -1,0 +1,6 @@
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+df[['temp', 'rain_1h', 'snow_1h', 'clouds_all']] = scaler.fit_transform(
+    df[['temp', 'rain_1h', 'snow_1h', 'clouds_all']]
+)
