@@ -1,0 +1,7 @@
+import joblib
+
+# Save model
+joblib.dump(grid_search.best_estimator_, 'traffic_volume_model.pkl')
+
+# Load model
+loaded_model = joblib.load('traffic_volume_model.pkl')
