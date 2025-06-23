@@ -1,0 +1,7 @@
+df['date_time'] = pd.to_datetime(df['date_time'])
+df['hour'] = df['date_time'].dt.hour
+df['day_of_week'] = df['date_time'].dt.dayofweek
+df['month'] = df['date_time'].dt.month
+
+# Categorical Encoding
+df = pd.get_dummies(df, columns=['weather_main', 'weather_description', 'holiday'])
