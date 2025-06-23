@@ -1,0 +1,3 @@
+sample_data = X_test.iloc[:10]
+predictions = loaded_model.predict(sample_data)
+print(predictions)
