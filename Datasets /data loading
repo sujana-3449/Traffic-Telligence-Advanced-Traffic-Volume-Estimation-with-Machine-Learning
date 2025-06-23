@@ -1,0 +1,10 @@
+import pandas as pd
+
+df = pd.read_csv('/kaggle/input/metro-interstate-traffic-volume/Metro_Interstate_Traffic_Volume.csv')
+print(df.head())
+print(f"The dataset has {df.shape[0]} rows and {df.shape[1]} columns")
+print(df.dtypes)
+
+missing_values = df.isnull().sum()
+print(f"Missing values in each column:\n{missing_values}")
+df.describe()
