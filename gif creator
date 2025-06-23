@@ -1,7 +1,0 @@
-import imageio
-
-def create_gif(frame_list, output_filename='vehicle_progression.gif', duration=0.7):
-    with imageio.get_writer(output_filename, mode='I', duration=duration, loop=0) as writer:
-        for filename in frame_list:
-            image = imageio.imread(filename)
-            writer.append_data(image)
