@@ -1,0 +1,21 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Histogram of traffic volume
+plt.figure(figsize=(10,6))
+sns.histplot(df['traffic_volume'], kde=True)
+plt.title('Distribution of Traffic Volume')
+plt.show()
+
+# Weather condition count
+plt.figure(figsize=(10,6))
+sns.countplot(x='weather_main', data=df)
+plt.title('Weather Conditions')
+plt.xticks(rotation=90)
+plt.show()
+
+# Temperature vs traffic volume
+plt.figure(figsize=(10,6))
+sns.scatterplot(x='temp', y='traffic_volume', data=df)
+plt.title('Traffic Volume vs Temperature')
+plt.show()
