@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charaset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta rel="stylesheet" href="style.css">
+<title>Traffic Volume Estimation</title>
+<link rel="preconnect" href="https://fonts.googleeapis.com">
+<link rel="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+<style.
+body{
+margin: 0;
+bacjground-size: cover;
+background-image: url("https://c8.alamy.com/comp/BMG2RB/traffic-jam-in-the-street-with-cars-on-a-highway-BMG2RB.jpg")
+}
+#heding2{
+text-align: center;
+text-decoration: underline;
+font-family: 'Ubuntu', sans-serif;
+margin-top: 5px;
+margin-bottom: 30px;
+}
+#heading{
+text-align: center;
+font-family: 'Ubuntu', sans-serif;
+}
+#form{
+padding-top: 1px;
+position: relative;
+top: 20px;
+left: 300px;
+border-radius: 10px;
+width: 40%;
+margin-left: auto;
+margin-right: auto;
+line-height: 0.6;
+box-sizing: border-box;
+box-shadow: 1px 1px 5px black;
+background-color: white;
+backdrop-filter: blur(3px);
+}
+from-element{
+margin-left: 150px;
+width: 45%;
+font-size: 22;
+outline: none;
+font-family: 'Ubuntu', sans-serif;
+border-top: none;
+border-left: none;
+border-right: none;
+border-bottom: 1px solid #ccc;
+line-height: 2;
+}
+#btn{
+margin-left: 325px;
+padding-left: 30px;
+padding-top: 7px;
+padding-right: 30px;
+padding-bottom: 7px;
+padding-bottom: 19px;
+background-color: #5ecf64;
+outline: none;
+border: none;
+font-weight; bold;
+border-radius: 5px;
+cursor: pointer;
+box-shadow: 1px 1px 5px black;
+}
+#section{
+margin-left: 150px;
+font-size: 18px;
+} 
+#holiday{
+font-family: 'Ubuntu', sans-serif;
+font-size: 16px;
+outline: none;
+}
+#weather{
+font-family: 'Ubuntu', sans-serif;
+font-size: 16px;
+outline: none;
+}
+</style>
+</head>
+<body>
+<div class="container">
+        <h1>Traffic Volume Estimation</h1>
+        <form action="/predict" method="POST">
+            <label for="holiday">Holiday (0 for No, 1 for Yes):</label>
+            <input type="number" id="holiday" name="holiday" min="0" max="1" required>
+
+            <label for="temp">Temperature (°C):</label>
+            <input type="number" id="temp" name="temp" step="0.1" required>
+
+            <label for="rain">Rain (mm):</label>
+            <input type="number" id="rain" name="rain" step="0.1" required>
+
+            <label for="snow">Snow (mm):</label>
+            <input type="number" id="snow" name="snow" step="0.1" required>
+
+            <label for="weather">Weather (1 to 4):</label>
+            <select id="weather" name="weather">
+                <option value="1">Clear</option>
+                <option value="2">Cloudy</option>
+                <option value="3">Rain</option>
+                <option value="4">Snow</option>
+            </select>
+
+            <label for="year">Year:</label>
+            <input type="number" id="year" name="year" min="2000" max="2100" required>
+
+            <label for="month">Month:</label>
+            <input type="number" id="month" name="month" min="1" max="12" required>
+
+            <label for="day">Day:</label>
+            <input type="number" id="day" name="day" min="1" max="31" required>
+
+            <label for="hour">Hour:</label>
+            <input type="number" id="hour" name="hour" min="0" max="23" required>
+
+            <label for="minute">Minute:</label>
+            <input type="number" id="minute" name="minute" min="0" max="59" required>
+
+            <label for="second">Second:</label>
+            <input type="number" id="second" name="second" min="0" max="59" required>
+
+            <button type="submit">Predict Traffic Volume</button>
+        </form>
+</form>
+</body>
+</html>
